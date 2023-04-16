@@ -10,6 +10,7 @@ public class Main {
         data[5] = new Employee("Чихун Иосиф Виссарионович", 1, 56000);
         data[6] = new Employee("Простак Иван Иванович", 2, 57000);
 
+
         printAllData();
         calcAllCostsPerMonth();
         findEmployeeMinWage();
@@ -18,54 +19,61 @@ public class Main {
         printAllFullName();
     }
 
-    public static void printAllData() {
-        for (int i = 0; i < Employee.getId(); i++) {
+    public static void printAllData() {  //Вариант 1
+        for (int i = 0; i < Employee.idCount; i++) {
             System.out.println(data[i]);
         }
     }
+ /*
+    public static void printAllData() { //Вариант 2
+        for (Employee datum : data) {
+            if (datum != null) {
+                System.out.println(datum);
+            } else {
+                break;
+            }
+        }
+    }
+  */
 
     public static void calcAllCostsPerMonth() {
         int sum = 0;
-        for (int i = 0; i < Employee.getId(); i++) {
+        for (int i = 0; i < Employee.idCount; i++) {
             sum = sum + data[i].getWage();
         }
         System.out.println("Сумма затрат на зарплаты в месяц : " + sum);
     }
 
     public static void findEmployeeMinWage() {
-        int min = data[0].getWage();
-        String name = data[0].getFullname();
-        for (int i = 1; i < Employee.getId(); i++) {
-            if (data[i].getWage() < min) {
-                min = data[i].getWage();
-                name = data[i].getFullname();
-            }
+    Employee min = data[0];
+    for (int i = 1; i < Employee.idCount; i++) {
+        if (data[i].getWage() < min.getWage()) {
+            min = data[i];
         }
-        System.out.println("Сотрудник с самой низкой зарплатой: " + name);
     }
+    System.out.println("С самой низкой зарплатой: " + min);
+}
 
     public static void findEmployeeMaxWage() {
-        int max = data[0].getWage();
-        String name = data[0].getFullname();
-        for (int i = 1; i < Employee.getId(); i++) {
-            if (data[i].getWage() > max) {
-                max = data[i].getWage();
-                name = data[i].getFullname();
+        Employee max = data[0];
+        for (int i = 1; i < Employee.idCount; i++) {
+            if (data[i].getWage() > max.getWage()) {
+                max = data[i];
             }
         }
-        System.out.println("Сотрудник с самой высокой зарплатой: " + name);
+        System.out.println("С самой высокой зарплатой: " + max);
     }
 
     public static void calcAverageWage() {
         int sum = 0;
-        for (int i = 0; i < Employee.getId(); i++) {
+        for (int i = 0; i < Employee.idCount; i++) {
             sum = sum + data[i].getWage();
         }
-        System.out.println("Средняя зарплата : " + sum / Employee.getId());
+        System.out.println("Средняя зарплата : " + sum / Employee.idCount);
     }
 
     public static void printAllFullName() {
-        for (int i = 0; i < Employee.getId(); i++) {
+        for (int i = 0; i < Employee.idCount; i++) {
             System.out.println("Сотрудник " + (i + 1) + " : " + data[i].getFullname());
         }
     }
