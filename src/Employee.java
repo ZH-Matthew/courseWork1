@@ -47,6 +47,6 @@ public class Employee {
                 " ФИО : '" + fullname + '\'' +
                 ", Отдел : " + department +
                 ", Зарплата : " + wage +
-                '}';
+                '.';
     }
 }
