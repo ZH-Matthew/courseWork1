@@ -12,8 +12,6 @@ public class Main {
         employeeBook.addEmployee("Чихун Иосиф Виссарионович", 1, 56000);
         employeeBook.addEmployee("Простак Иван Иванович", 2, 57000);
 
-
-
     }
 }
 
